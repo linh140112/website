@@ -5,24 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đền Hát Môn - Di Tích Quốc Gia Đặc Biệt</title>
     
-    <!-- Link Font Online -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Link Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Link đến file CSS riêng -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- [FIX] DÙNG THẺ DIV RIÊNG ĐỂ CHỨA BACKGROUND -->
-    <!-- ID="bg-img": Chứa ảnh nền + hiệu ứng Blur -->
     <div id="bg-img"></div>
     
-    <!-- ID="bg-overlay": Lớp phủ trắng mờ giúp đọc chữ dễ hơn -->
     <div id="bg-overlay"></div>
 
     <header>
@@ -85,7 +79,6 @@
                 <p>Tổng thể khu di tích rộng hơn 3ha với kiến trúc hài hòa, uy nghiêm, mang đậm dấu ấn chạm khắc thời Lê - Nguyễn.</p>
             </div>
 
-            <!-- Item 1: Nghi Môn -->
             <div class="campus-item reveal">
                 <div class="campus-img">
                     <img src="nghi-mon.jpg" alt="Nghi Môn Đền Hát Môn">
@@ -96,7 +89,6 @@
                 </div>
             </div>
 
-            <!-- Item 2: Khu Đền Chính -->
             <div class="campus-item reveal">
                 <div class="campus-img">
                     <img src="den-chinh.jpg" alt="Khu Đền Chính">
@@ -112,7 +104,6 @@
                 </div>
             </div>
 
-            <!-- Item 3: Gò Ma Lôi & Cây Đa -->
             <div class="campus-item reveal">
                 <div class="campus-img">
                     <img src="cay-da.jpg" alt="Cây đa cổ thụ">
@@ -132,23 +123,31 @@
             </div>
             
             <div class="media-grid reveal">
-                <!-- Video 1 -->
                 <div class="video-wrapper">
-                    <video controls>
-                        <source src="https://youtu.be/LuES-_W4OYM?si=4Xz_LzBCGXa3XC08">
-                        Trình duyệt của bạn không hỗ trợ thẻ video.
-                    </video>
+                    <iframe 
+                        width="100%" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/LuES-_W4OYM" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                     <div class="video-caption">
                         <i class="fas fa-video"></i> Khuôn Viên Đền Hát Môn
                     </div>
                 </div>
 
-                <!-- Video 2 -->
                 <div class="video-wrapper">
-                    <video controls>
-                        <source src="le-hoi.mp4" type="video/mp4">
-                        Trình duyệt của bạn không hỗ trợ thẻ video.
-                    </video>
+                    <iframe 
+                        width="100%" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/0jtRJAfZtL8" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                     <div class="video-caption">
                         <i class="fas fa-drum"></i> Lễ hội Rước bánh trôi (6/3 Âm lịch)
                     </div>
@@ -193,14 +192,7 @@
         </div>
     </footer>
 
-    <!-- Link đến file JS -->
     <script src="script.js"></script>
 
 </body>
-
 </html>
-
-
-
-
-
