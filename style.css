@@ -1,0 +1,435 @@
+/* --- 1. CÀI ĐẶT CHUNG --- */
+:root {
+    --primary-color: #8B0000;
+    --gold-color: #C5A059;
+    --wood-color: #4A3728;
+    --text-dark: #2c3e50;
+    --font-main: 'Roboto', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin: 0;
+    /* Quan trọng: Để nền trong suốt để thấy được ảnh phía dưới */
+    background-color: transparent; 
+}
+
+/* --- [MỚI] CẤU HÌNH BACKGROUND BẰNG DIV ID --- */
+
+/* 1. Lớp chứa ảnh nền */
+#bg-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Layer thấp nhất */
+    z-index: -999; 
+    
+    /* Đường dẫn ảnh: Hãy chắc chắn file ảnh nằm trong thư mục 'source' */
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+    
+    /* Hiệu ứng làm mờ */
+    filter: blur(8px);
+    
+    /* Phóng to nhẹ để che các viền bị mờ trắng */
+    transform: scale(1.1);
+}
+
+/* 2. Lớp phủ màu trắng mờ (Overlay) */
+#bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Nằm trên ảnh nền nhưng dưới nội dung web */
+    z-index: -998; 
+    
+    /* Màu trắng độ trong suốt 0.85 (85%) */
+    background: rgba(255, 255, 255, 0.85);
+}
+
+
+/* --- 2. HEADER & NAV --- */
+header {
+    background: #2b0c0c;
+    color: #fff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    border-bottom: 2px solid var(--gold-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a:hover { color: var(--gold-color); }
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--gold-color);
+    transition: 0.3s;
+}
+
+nav a:hover::after { width: 100%; }
+
+/* --- 3. HERO BANNER --- */
+.hero {
+    height: 90vh;
+    /* Ảnh Banner riêng (vẫn giữ nguyên để tạo ấn tượng đầu trang) */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+                url('background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--gold-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-style: italic;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid var(--gold-color);
+    transition: 0.4s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background-color: var(--gold-color);
+    color: #000;
+}
+
+/* --- 4. SECTIONS CHUNG --- */
+section { padding: 80px 0; }
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: "❖";
+    display: block;
+    color: var(--gold-color);
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+/* --- 5. LỊCH SỬ --- */
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.history-img {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.history-img img {
+    width: 100%;
+    height: auto;
+    min-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 12px 12px 0 #ddd, 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.history-img img:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 15px 0 #ddd, 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.history-text {
+    /* Nền trắng bán trong suốt để lộ background mờ */
+    background: rgba(255, 255, 255, 0.7); 
+    padding: 40px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    backdrop-filter: blur(5px);
+}
+
+.history-text h3 {
+    font-family: var(--font-serif);
+    color: var(--wood-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.timeline-year {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* --- 6. KHUÔN VIÊN ĐỀN --- */
+.campus-section { background-color: transparent; }
+
+.campus-item {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.campus-item:nth-child(even) { flex-direction: row-reverse; }
+
+.campus-img {
+    flex: 1;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 10px 10px 0 var(--gold-color);
+}
+
+.campus-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.campus-img:hover img { transform: scale(1.1); }
+
+.campus-info { flex: 1; }
+.campus-info h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+.campus-info ul { margin-left: 20px; margin-top: 10px; }
+
+/* --- 7. VIDEO SECTION --- */
+.media-section {
+    background-color: rgba(26, 26, 26, 0.95);
+    color: #fff;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.video-wrapper {
+    background: #000;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.video-caption {
+    margin-top: 15px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--gold-color);
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 8. LỄ HỘI --- */
+.festival-highlight {
+    background: url('hinh-nen-le-hoi.jpg') fixed center;
+    position: relative;
+    color: #fff;
+    background-size: cover;
+}
+
+.festival-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(43, 12, 12, 0.9);
+}
+
+.festival-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.festival-desc h3 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--gold-color);
+    margin-bottom: 20px;
+}
+
+.festival-note {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-left: 4px solid var(--gold-color);
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.festival-img {
+    width: 100%; 
+    border: 5px solid #fff; 
+    border-radius: 5px;
+}
+
+/* --- 9. FOOTER --- */
+footer {
+    background: #111;
+    color: #888;
+    padding: 50px 0 20px;
+    text-align: center;
+    border-top: 3px solid var(--primary-color);
+}
+
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-container { flex-direction: column; gap: 15px; }
+    
+    .history-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .history-img img {
+        min-height: 300px;
+    }
+    
+    .history-grid, .campus-item, .media-grid, .festival-content {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    .campus-item:nth-child(even) { flex-direction: column; }
+    .hero-content h1 { font-size: 2.5rem; }
+}
+
+/* --- 10. HIỆU ỨNG (JS Control) --- */
+.reveal {
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
